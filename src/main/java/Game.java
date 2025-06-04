@@ -9,21 +9,30 @@ public class Game {
         if (guessNumber.equals(question)) {
             return new GameResult(true, 3, 0);
         } else {
-            int strikes = 0;
-            int balls = 0;
-
-            for (int i = 0; i < 3; i++) {
-                if (guessNumber.charAt(i) == question.charAt(i)) {
-                    strikes++;
-                } else if (judge(question, guessNumber.charAt(i))){
-                    balls++;
-                }
-
-            }
-
-            return new GameResult(false, strikes, balls);
+            return new GameResult(false, getStrikes(guessNumber), getBalls(guessNumber));
         }
 
+    }
+
+    private int getBalls(String guessNumber) {
+        int balls=0;
+        for (int i = 0; i < 3; i++) {
+            if (guessNumber.charAt(i) == question.charAt(i)) {
+            } else if (judge(question, guessNumber.charAt(i))){
+                balls++;
+            }
+        }
+        return balls;
+    }
+
+    private int getStrikes(String guessNumber) {
+        int strikes=0;
+        for (int i = 0; i < 3; i++) {
+            if (guessNumber.charAt(i) == question.charAt(i)) {
+                strikes++;
+            }
+        }
+        return strikes;
     }
 
     private boolean judge(String question, char answer) {
