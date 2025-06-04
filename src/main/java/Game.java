@@ -9,7 +9,7 @@ public class Game {
         if(guessNumber.equals(question)){
             return new GameResult(true,3,0);
         }else{
-            return null;
+            return new GameResult(false,0,0);
         }
 
     }
