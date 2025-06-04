@@ -6,12 +6,16 @@ public class Game {
 
     public GameResult guess(String guessNumber) {
         assertIllegalAargument(guessNumber);
-        if (guessNumber.equals(question)) {
-            return new GameResult(true, 3, 0);
-        } else {
-            return new GameResult(false, getStrikes(guessNumber), getBalls(guessNumber));
-        }
 
+        int strikes = getStrikes(guessNumber);
+        int balls = getBalls(guessNumber);
+
+        return new GameResult(isCorrect(strikes), strikes, balls);
+
+    }
+
+    private boolean isCorrect(int strikes) {
+        return strikes == 3;
     }
 
     private int getBalls(String guessNumber) {
