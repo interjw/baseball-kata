@@ -8,9 +8,8 @@ public class Game {
         assertIllegalAargument(guessNumber);
 
         int strikes = getStrikes(guessNumber);
-        int balls = getBalls(guessNumber);
 
-        return new GameResult(isCorrect(strikes), strikes, balls);
+        return new GameResult(isCorrect(strikes), strikes, getBalls(guessNumber));
 
     }
 
