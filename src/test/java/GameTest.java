@@ -59,4 +59,10 @@ class GameTest {
     private void generateQuestion(String questionNumber) {
         game.question = questionNumber;
     }
+
+    @Test
+    void testTwoStrikesZeroBalls() {
+        generateQuestion("123");
+        assertMatchedNumber(game.guess("143"), false, 2, 0);
+    }
 }
